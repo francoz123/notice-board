@@ -52,7 +52,7 @@ echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
 		mysqli_close($conn); 
 	}
 	$today = getdate(date('U')); print_r ($today);
-	$sql = "SELECT * FROM reminder WHERE date = {formatDate('{$today['year']}-{$today['month']}-{$today['mday']}')}";
+	$sql = "SELECT * FROM reminder WHERE date = {formatDate(date('Y-M-d'))}";
 	$query = mysqli_query($conn, $sql);
 	if ($query) {
 		while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)){
