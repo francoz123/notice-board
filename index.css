@@ -1,0 +1,41 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    height: 100vh;
+}
+.error-message {
+    color: red;
+}
+  .content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height:100vh;
+    width: 500px;
+    height: 400px;
+}
+
+.content *{
+    display: block;
+}
+
+#error {
+    display: none;
+}
+
+input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 10px;
+}
+
+#loginForm {
+    width: 100%;
+}
+
+#submit {
+    color: white;
+    background-color: #4287f5;
+}
