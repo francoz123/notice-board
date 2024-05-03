@@ -30,8 +30,8 @@
 		echo "Error selecting data: " . mysqli_error($conn);
 		mysqli_close($conn); 
 	}
-	$today = getdate(date('U')); print_r ($today);
-	$sql = "SELECT * FROM reminder WHERE date = '{$today['weekday']} {$today['month']} {$today['mday']}, {$today['year']}'";
+	$today = date("Dr M j, Y");//getdate(date('U')); print_r ($today);
+	$sql = "SELECT * FROM reminder WHERE date = '{$today}'";
 	$query = mysqli_query($conn, $sql);
 	if ($query) {
 		while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)){

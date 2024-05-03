@@ -189,3 +189,10 @@ function updateDisplay(){
 	document.getElementById("display-h4").innerHTML = this.getAttribute("id");
 	document.getElementById("display-div").innerHTML = this.innerHTML;
 }
+
+function showTodayActivities(){
+	let today = 
+	items.map (item => {
+		document.getElementById("today")
+	})
+}
