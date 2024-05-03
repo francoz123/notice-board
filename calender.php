@@ -10,7 +10,28 @@
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <?php 
 
-	
+	function formatDate($date) {
+    // Get the full name of the day
+    $dayFullName = date('l', strtotime($date));
+    // Check if the day is Thursday
+    if ($dayFullName === 'Thursday') {
+        // If it is Thursday, use 'Thur'
+        $dayShortName = 'Thur';
+    } else {
+        // Otherwise, use the standard three-letter abbreviation
+        $dayShortName = date('D', strtotime($date));
+    }
+    // Format the rest of the date
+    $formattedDate = date(' M j, Y', strtotime($date));
+    // Combine the short day name with the formatted date
+    return $dayShortName . $formattedDate;
+}
+
+// Example usage:
+echo formatDate('2024-05-02'); // Outputs 'Thur May 2, 2024'
+echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
+
+
 	$conn = mysqli_connect("localhost","francis","rDY6JcAcmyCOEsJQ","my_database");
 	$sql = "SELECT * FROM reminder";
 	$query = mysqli_query($conn, $sql);
@@ -30,8 +51,8 @@
 		echo "Error selecting data: " . mysqli_error($conn);
 		mysqli_close($conn); 
 	}
-	$today = date("Dr M j, Y");//getdate(date('U')); print_r ($today);
-	$sql = "SELECT * FROM reminder WHERE date = '{$today}'";
+	$today = getdate(date('U')); print_r ($today);
+	$sql = "SELECT * FROM reminder WHERE date = {formatDate(date('Y-M-d'))}";
 	$query = mysqli_query($conn, $sql);
 	if ($query) {
 		while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)){
