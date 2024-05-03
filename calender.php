@@ -11,25 +11,21 @@
   <?php 
 
 	function formatDate($date) {
-    // Get the full name of the day
-    $dayFullName = date('l', strtotime($date));
-    // Check if the day is Thursday
-    if ($dayFullName === 'Thursday') {
-        // If it is Thursday, use 'Thur'
-        $dayShortName = 'Thur';
-    } else {
-        // Otherwise, use the standard three-letter abbreviation
-        $dayShortName = date('D', strtotime($date));
-    }
-    // Format the rest of the date
-    $formattedDate = date(' M j, Y', strtotime($date));
-    // Combine the short day name with the formatted date
-    return $dayShortName . $formattedDate;
-}
-
-// Example usage:
-echo formatDate('2024-05-02'); // Outputs 'Thur May 2, 2024'
-echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
+		// Get the full name of the day
+		$dayFullName = date('l', strtotime($date));
+		// Check if the day is Thursday
+		if ($dayFullName === 'Thursday') {
+			// If it is Thursday, use 'Thur'
+			$dayShortName = 'Thur';
+		} else {
+			// Otherwise, use the standard three-letter abbreviation
+			$dayShortName = date('D', strtotime($date));
+		}
+		// Format the rest of the date
+		$formattedDate = date(' M j, Y', strtotime($date));
+		// Combine the short day name with the formatted date
+		return $dayShortName . $formattedDate;
+	}
 
 
 	$conn = mysqli_connect("localhost","francis","rDY6JcAcmyCOEsJQ","my_database");
@@ -51,24 +47,24 @@ echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
 		echo "Error selecting data: " . mysqli_error($conn);
 		mysqli_close($conn); 
 	}
-	$today = getdate(date('U')); print_r ($today);
-	$sql = "SELECT * FROM reminder WHERE date = {formatDate(date('Y-M-d'))}";
+	$today = formatDate(date('Y-M-d'));
+	$sql = "SELECT * FROM reminder WHERE date = '{$today}'";
 	$query = mysqli_query($conn, $sql);
-	if ($query) {
-		while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)){
-			echo "".$row["date"]."\n";
-			$i++;
-		}
-	}
-	echo $sql;
 ?>
+
 </head>
 <body>
+	<header>
+		<nav>
+			<div id='welcome-message'>Hello</div> 
+			<div id='links'></div>
+		</nav>
+	</header>
 	<div>
 		<h1 id="monthandyear"></h1>
 	</div>
   
-	<section = class="content">
+	<section class="content">
 		<div class="body">
 			<div class="content-wrapper">
 				<div class="side-bar">Dummy links
@@ -156,7 +152,17 @@ echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
 				
 				<section id="today-section" class="today-section">
 					<div class="title">Today</div>
-					<div>Lorem ipsium santus dea ..</div>
+					<?php 
+						if ($query) {
+							while ($row = mysqli_fetch_array($query, MYSQLI_BOTH)){
+								echo "<div class='msg'>
+										<span class='name'>{$row['name']}: </span>
+										{$row['message']}
+									</div>";
+								$i++;
+							}
+						}
+					?>
 				</section>
 				
 			</div>
@@ -181,6 +187,7 @@ echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
 		<h3 id="form-h3"></h3>
 		<form action="action.php" method="post">	
 			<input type="hidden" name="date" id="date" value="">
+			<input type="hidden" name="name" id="name" value="">
 
 			<label for="details" >Enter details:</label><br>
 			<textarea id="details" name="details" rows="10" cols="50" oninput="validateform()" required></textarea><br>
@@ -192,6 +199,6 @@ echo formatDate('2024-05-03'); // Outputs 'Fri May 3, 2024'
 </div>
 
 </body>
-<script src="modal.js"></script>
 <script src="calender.js"></script>
+<script src="modal.js"></script>
 </html>

@@ -1,6 +1,7 @@
 /*This code uses a date object to create a calender UI that a user can
 interact with*/
-
+let user = JSON.parse(window.localStorage.getItem('user'));
+username = user.name;
 var currentDay = new Date(); //Creates a date object
 var date = currentDay.getDate(); // Retrieves the date value of the date object
 
@@ -107,11 +108,12 @@ for (var i=1;i<= daysInMonth(month, year);i++){
 				var dLink = document.createElement("a");
 				var liSpan = document.createElement("span");
 				liSpan.classList.add("lispan");
-				dLink.setAttribute("href", "action.php?id="+items[j][0]+"&y="+currentYear+"&m="+currentMonth+"");
+				liSpan.classList.add("name");
+				dLink.setAttribute("href", "action.php?id="+items[j][0]+"&y="+currentYear+"&m="+currentMonth+"&name="+username);
 				icon.setAttribute("class", "fa fa-trash");
 				dLink.setAttribute("title", "Delete");
 				dLink.appendChild(icon);
-				liSpan.innerHTML=items[j][2];
+				liSpan.innerHTML=`<strong>${items[j][3]}:</strong> ${items[j][2]}`;
 				liSpan.setAttribute("id", items[j][1]);
 				liSpan.addEventListener("click", updateDisplay);
 				ili.appendChild(liSpan);
@@ -179,12 +181,12 @@ function updateCell(){modal.style.display = "block";
 	document.getElementById("date").value=message;
 }
 
-// This funtion returnes the number of days in the month
+// This function returns the number of days in the month
 function daysInMonth(iMonth, iYear) {
     return 32 - new Date(iYear, iMonth, 32).getDate();
 }
 
-// This funtion is called when a list item is clicked on
+// This function is called when a list item is clicked on
 function updateDisplay(){
 	document.getElementById("display-h4").innerHTML = this.getAttribute("id");
 	document.getElementById("display-div").innerHTML = this.innerHTML;
@@ -196,3 +198,5 @@ function showTodayActivities(){
 		document.getElementById("today")
 	})
 }
+
+document.getElementById('welcome-message').innerHTML = `Welcome ${username}`;

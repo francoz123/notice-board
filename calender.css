@@ -70,7 +70,7 @@ html, body {
 	box-sizing:border-box;
 	border: 1px solid black;
 }
-}
+
 
 #ta {
 	z-index:10;
@@ -157,7 +157,6 @@ html, body {
   transition: height 0.5s;
   margin:0; padding:0;
   min-width: 100px;
-  background:;
   border: 1px solid ;
   font-size:12px;
   font-weight:bold;
@@ -200,7 +199,6 @@ display:block;
 	width:100%;
 	line-height:5px;
 	font-weight:bold;
-	vertical-align: middle;
 	margin-bottom:7px;
 }
 .ul-left {
@@ -243,13 +241,21 @@ button:active {
 	border-style:none;
 }
 
+.msg {
+  padding: 0 5px;
+  margin-top: 10px;
+}
 
-git init
-git add .
-git commit -m "Add files"
-git branch -M main
-git remote add origin https://github.com/francoz123/notice-board.git
-git push -u origin main
+.name {
+  font-weight: bolder;
+  font-size: 20;
+}
 
-SELECT * FROM reminder WHERE date = '2024-May-2'
-SELECT * FROM `reminder` WHERE DATE_FORMAT(date, "%Y %m %d") = '2024 05 02'
+#welcome-message {
+  font-size: 20;
+  font-weight: bolder;
+}
+
+header {
+  padding: 0 50px;
+}

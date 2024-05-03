@@ -1,6 +1,8 @@
 // Get the modal
 var modal = document.getElementById("myModal");
-
+var nameInput = document.getElementById("name");
+//let user = JSON.parse(window.localStorage.getItem('user'));
+nameInput.value = username;
 // Get the button that opens the modal
 
 

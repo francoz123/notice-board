@@ -29,7 +29,7 @@ function validateForm() {
     // If user is found, validation is successful
     if (user) {
         console.log('User validated successfully.');
-        localStorage.setItem('user', user);
+        localStorage.setItem('user', JSON.stringify(user));
         return true;
     } else {
         document.getElementById("error").style.display = 'block';

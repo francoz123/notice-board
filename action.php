@@ -6,16 +6,18 @@
 		  die("Connection failed: " . mysqli_connect_error());
 		}
 		//$sql = "INSERT INTO `reminder` (`id`,`date`, `message`) VALUES ('".$_date."', '".$message."'";
-		$sql = "INSERT INTO `reminder` (`date`, `message`) VALUES (?,?)";
+		$sql = "INSERT INTO `reminder` (`name`, `date`, `message`) VALUES (?,?,?)";
 
 		// Check connection
 		
 		//echo "Connected successfully";
 		if($stmt = mysqli_prepare($conn, $sql)){
             // Bind variables to the prepared statement as parameters
-			mysqli_stmt_bind_param($stmt, "ss", $_date, $message);
+			mysqli_stmt_bind_param($stmt, "sss", $name, $_date, $message);
+			$name = $_REQUEST["name"];
 			$_date = $_REQUEST["date"];
 			$message = $_REQUEST["details"];
+			
 			mysqli_stmt_execute($stmt);
 			
 		/*if (mysqli_query($conn, $sql)) {
