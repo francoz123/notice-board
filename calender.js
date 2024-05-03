@@ -2,6 +2,9 @@
 interact with*/
 let user = JSON.parse(window.localStorage.getItem('user'));
 username = user.name;
+
+if (!user.admin) {document.getElementById('addUser').style.display = "none"}
+
 var currentDay = new Date(); //Creates a date object
 var date = currentDay.getDate(); // Retrieves the date value of the date object
 

@@ -55,9 +55,10 @@
 </head>
 <body>
 	<header>
+		<div id='welcome-message'>Hello</div>
 		<nav>
-			<div id='welcome-message'>Hello</div> 
-			<div id='links'></div>
+			 <a href="add_user.html" id='addUser'>Add User</a>
+			 <a href="index.html" id='logout'>Logout</a>
 		</nav>
 	</header>
 	<div>

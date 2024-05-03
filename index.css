@@ -8,7 +8,7 @@ main {
     color: red;
 }
   .content {
-    margin: auto;
+    margin:0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,4 +38,10 @@ input {
 #submit {
     color: white;
     background-color: #4287f5;
+}
+
+.success {
+    display: none;
+    font-weight: bolder;
+    color: green;
 }

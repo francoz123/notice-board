@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="calender.css">
+    <script src="index.js"></script>
+</head>
+<body>
+    <header>
+		<div id='welcome-message'>&nbsp;</div>
+		<nav>
+			 <a href="calender.php" id='addUser'>Back</a>
+			 <a href="index.html" id='logout'>Logout</a>
+		</nav>
+	</header>
+    <main>
+        <div class="content">
+            <div id="success" class="success" >Account creation successful.</div>
+            <h1>Add new user</h1>
+            <p id="error" class="error-message" >Passwords do not match.</p>
+            <form id="loginForm" onsubmit="return validateForm()" action="">
+                <label for="rname">Name:</label>
+                <input type="text" id="rname" name="rname" autocomplete="name" required>
+                <br>
+
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" autocomplete="username" required>
+                <span class="error-message" id="usernameError"></span>
+                <br>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" autocomplete="current-password" required>
+                <span class="error-message" id="passwordError"></span>
+                <br>
+
+                <label for="password">Confirm password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" autocomplete="current-password" required>
+                <span class="error-message" id="passwordError"></span>
+                <br>
+                <input type="submit" id="submit" value="Register user">
+            
+            </form>
+        </div>
+    </main>
+    <!-- <script>let users = [
+        {id: 1, name: "Mark", username: "mark01", password: "mark1234", admin: false}, 
+        {id: 2, name: "Mary", username: "mary01", password: "mary1234", admin: false}, 
+        {id: 3, name: "Alex", username: "alex01", password: "alex1234", admin: true}
+    ];
+    
+localStorage.setItem("users", JSON.stringify(users)) </script> -->
+    <script src="add_user.js"></script>
+</body>
+</html>
+
+
+
